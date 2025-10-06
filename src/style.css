@@ -1,0 +1,211 @@
+ @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+
+ * {
+     font-family: "Open Sans", sans-serif;
+     color: aliceblue;
+     margin: 0px;
+     padding: 0px;
+ }
+
+ a {
+     text-decoration: none;
+ }
+
+ header {
+     background-color: #009dff;
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+     padding: 10px 15%
+ }
+
+ .logo {
+     cursor: pointer;
+     font-size: 30px;
+     font-weight: bold;
+     letter-spacing: 1px;
+ }
+
+ .nav-links {
+     list-style: none;
+
+ }
+
+ .nav-links li {
+     display: inline-block;
+     padding: 10px
+ }
+
+ .nav-links li a:hover {
+     color: #030a0f;
+     /* hover color */
+     transform: scale(1.1);
+     /* make it a little bigger */
+     font-size: 20px;
+ }
+
+ .market-watch {
+     display: flex;
+     justify-content: center;
+     /* centers content horizontally */
+     align-items: center;
+     /* vertical alignment */
+     font-size: 30px;
+     padding: 10px;
+     position: relative;
+     /* so we can position "Home" */
+ }
+
+ .market-watch .home {
+     position: absolute;
+     right: 20px;
+     /* push to right corner */
+     font-size: 18px;
+     text-decoration: none;
+     color: #121213;
+ }
+
+ .market-watch a:hover {
+     color: #eef1f3;
+     /* hover color */
+     transform: scale(1.1);
+     /* make it a little bigger */
+     font-size: 20px;
+ }
+
+ .btn {
+     background-color: #4a90e2;
+     display: flex;
+     padding: 30px 65px;
+     border-radius: 10px;
+     /* rounded corners */
+     margin-top: 50px;
+     /* push down from header */
+     cursor: pointer;
+     font-size: 26px;
+     display: inline-block;
+     /* keep it neat */
+     transition: 0.3s;
+ }
+
+ .btn:hover {
+     background-color: #357ab8;
+     /* darker blue on hover */
+ }
+
+ table {
+     border-collapse: collapse;
+     /* removes double borders */
+     width: 100%;
+     /* table takes full width */
+     text-align: center;
+     /* center all text in cells */
+     margin-top: 20px;
+ }
+
+ thead th {
+     background-color: #f0f0f0;
+     color: #030a0f;
+     padding: 10px;
+     border: 1px solid #030a0f;
+ }
+
+ tbody td {
+     padding: 8px;
+     border: 1px solid #030a0f;
+     color: #000000;
+     /* black text */
+ }
+
+ tbody tr:nth-child(even) {
+     background-color: #f9f9f9;
+     /* alternating row colors */
+ }
+
+ tbody tr:hover {
+     background-color: #e0e0e0;
+     /* hover effect */
+ }
+
+ .livedata {
+    color: #3012db;
+    font-weight: bold;
+    font-size: 25px;
+    padding: 8px 8px;
+     
+ }
+
+ 
+ /* Table base */
+#stocktable {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 30px 20px; /* gap between cells */
+    margin-top: 20px;
+    font-family: Arial, sans-serif;
+}
+
+/* Key cells */
+#stocktable .key {
+    font-weight: bold;
+    text-align: left;
+    padding: 10px 15px;
+    background-color: #f8f8f2;
+    border-radius: 8px 0 0 8px;
+    color: #333;
+    min-width: 120px;
+}
+
+/* Value cells */
+#stocktable .value {
+    text-align: left;
+    padding: 10px 15px;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-left: none;
+    border-radius: 0 8px 8px 0;
+    font-weight: 600;
+    min-width: 100px;
+    transition: background-color 0.5s, color 0.5s; /* smooth effect */
+}
+
+/* Table hover effect */
+#stocktable tr:hover td {
+    background-color: #f9f9f9;
+}
+
+/* Animate value change (JS will toggle this) */
+.value.updated {
+    background-color: #e0f7fa;
+    color: #00796b;
+    transition: background-color 0.6s ease;
+}
+
+/* Table caption styling */
+.livedata {
+    color: #222;
+    font-weight: bold;
+    font-size: 22px;
+    padding: 12px;
+    caption-side: top;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+
+/* Default cell style */
+td.value {
+    padding: 5px 10px;
+    text-align: center;
+    transition: background-color 0.5s ease; /* smooth color change */
+}
+td.value.highlight {
+    background-color: rgb(141, 211, 145) !important;
+    transition: background-color 0.5s ease;
+}
+
+td.value.highlight1 {
+    background-color: rgb(218, 185, 136) !important;
+    transition: background-color 0.5s ease;
+}

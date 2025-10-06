@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Market Watching</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header class="market-watch">
+        Market Watch
+        <a href="index.html" class="home"> Home </a>
+    </header>
+
+    <button type="button" class="btn" onclick="getfivemindata()"> 5 MINS DATA</button>
+    <button type="button" class="btn" onclick="getonehrmindata()"> 1 HOUR DATA</button>
+
+    <table class="list" id="intraday">
+        <thead>
+            <tr>
+                <th>Script Name</th>
+                <th>Open</th>
+                <th>High</th>
+                <th>Low</th>
+                <th>Close</th>
+                <th>Volume</th>
+                <th>Time</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+    <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hari's Trading Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <a class="logo">Trading Dashboard</a>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="marketwatch.html"> Market Watch</a></li>
+                <li><a href="greeks.html"> Greeks </a></li>
+                <li><a href="nifty.html"> Nifty</a></li>
+                <li><a href="watching.html"> Stocks</a></li>
+            </ul>
+        </nav>
+    </header>
+    <table id="stocktable" class="livedatatbl">
+        <caption class="livedata"> Live Market Data </caption>
+        <tbody>
+            <tr>
+                <td class="key"> Nifty </td>
+                <td class="value" id="nifty"></td>
+                <td class="key"> Bank Nifty </td>
+                <td class="value" id="banknifty"></td>
+                <td class="key"> Fin Nifty </td>
+                <td class="value" id="finnifty"></td>
+            </tr>
+            <tr>
+                <td class="key"> Sensex </td>
+                <td class="value" id="sensex"></td>
+                <td class="key"> BankEx</td>
+                <td class="value" id="bankex"></td>
+                <td class="key"> Crude Oil </td>
+                <td class="value" id="crudeoil"></td>
+            </tr>
+        </tbody>
+    </table>
+    <script src="script.js"></script>
+</body>
+
+</html>

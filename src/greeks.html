@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Greeks Data</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header class="greeks-data"> Greeks Data
+        <a href="/src/optionsgreeks.html" class="optionsgreeks"> Option Greeks Live Data </a>
+        <a href="/index.html" class="home"> Home </a>
+    </header>
+
+    <label class='getExpiryList'> Get Expiry List </label>
+    <select id="select" name="greeks-select">
+        <option value=''> Select </option>
+        <option value='Nifty'> Nifty </option>
+        <option value='BankNifty'> BankNifty </option>
+        <option value='FinNifty'> FinNifty </option>
+        <option value='SenSex'> SenSex </option>
+        <option value='BankEx'> BankEx </option>
+    </select>
+    <button type="button" class="btn" onclick="getGreeksData()" id="greeksbtn">Submit</button>
+
+    <table class="greeks" id="greeksdata">
+        <thead>
+            <tr>
+                <th>S.No</th>
+                <th>Expiry Date</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+
+</body>
+<script src="script.js"></script>
+
+</html>

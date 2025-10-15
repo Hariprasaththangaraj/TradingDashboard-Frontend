@@ -161,6 +161,168 @@ function insertIndexData(res) {
     }
 }
 
+// setInterval(indexdata, 1100);
+
+// ---------------------------------- Greeks Data -------------------------------------
 
 
-setInterval(indexdata, 1100);
+const sctiptMapping = {
+    Nifty: { underlyingScrip: 13, underlyingSeg: "IDX_I" },
+    BankNifty: { underlyingScrip: 25, underlyingSeg: "IDX_I" },
+    FinNifty: { underlyingScrip: 27, underlyingSeg: "IDX_I" },
+    SenSex: { underlyingScrip: 51, underlyingSeg: "IDX_I" },
+    BankEx: { underlyingScrip: 69, underlyingSeg: "IDX_I" },
+
+}
+
+async function getGreeksData() {
+    let dt = document.getElementById('select').value;
+    let greeksPayLoad = sctiptMapping[dt]
+    // console.log(greeksPayLoad)
+
+    let res = await fetch('http://localhost:8080/optionchain/expirylist', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify(
+            greeksPayLoad
+        )
+    })
+
+    let data = await res.json();
+    geeksDataInsert(data);
+
+    return data;
+}
+
+
+function geeksDataInsert(ele) {
+    var tdata = document.getElementById('greeksdata').querySelector('tbody');
+    tdata.innerHTML = '';
+
+    ele.data.forEach((expiry, index) => {
+        var inserRow = tdata.insertRow();
+
+        inserRow.insertCell(0).innerHTML = index + 1;
+        inserRow.insertCell(1).innerHTML = expiry;
+
+    });
+}
+
+
+async function showGreeksData(data) {
+    var data = data.id;
+    let greeksPayLoad = sctiptMapping[data]
+    // console.log(greeksPayLoad)
+
+    let res = await fetch('http://localhost:8080/optionchain/expirylist', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify(
+            greeksPayLoad
+        )
+    })
+
+    let expiryData = await res.json();
+
+    // console.log(expiryData)
+
+
+    let payLoad = {
+        underlyingScrip: greeksPayLoad.underlyingScrip,
+        underlyingSeg: greeksPayLoad.underlyingSeg,
+        expiry: expiryData.data[0]
+    }
+
+    // console.log(payLoad)
+
+    let resp = await fetch('http://localhost:8080/optionchain', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify(
+            payLoad
+        )
+    });
+
+    let respData = await resp.json();
+    // console.log(respData);
+    inserOptionsGreeksDataHeader(respData, data);
+}
+
+
+function inserOptionsGreeksDataHeader(element, data) {
+    var theaderData = document.getElementById('headerData');
+    var theaderValue = document.getElementById('headerValue');
+
+    theaderData.innerHTML = '';
+    theaderValue.innerHTML = '';
+
+    theaderData.innerHTML = data;
+    theaderValue.innerHTML = element.data.last_price;
+    console.log(element)
+
+
+    var tbody = document.getElementById('greeksbtable').querySelector('tbody');
+    tbody.innerHTML = ''
+
+    var strikePrices = Object.keys(element.data.oc);
+
+    // console.log(strikePrices)
+    strikePrices.forEach((sp) => {
+        var ceData = element.data.oc[sp].ce;
+        var peData = element.data.oc[sp].pe;
+
+        console.log(ceData)
+        console.log(peData)
+
+        if (ceData) {
+            var inserRow = tbody.insertRow();
+
+            inserRow.insertCell(0).innerHTML = Number(sp);
+            inserRow.insertCell(1).innerHTML = 'ce';
+            inserRow.insertCell(2).innerHTML = ceData.greeks.delta;
+            inserRow.insertCell(3).innerHTML = ceData.greeks.theta;
+            inserRow.insertCell(4).innerHTML = ceData.greeks.gamma;
+            inserRow.insertCell(5).innerHTML = ceData.greeks.vega;
+            inserRow.insertCell(6).innerHTML = ceData.implied_volatility;
+            inserRow.insertCell(7).innerHTML = ceData.last_price;
+            inserRow.insertCell(8).innerHTML = ceData.oi;
+            inserRow.insertCell(9).innerHTML = ceData.previous_close_price;;
+            inserRow.insertCell(10).innerHTML = ceData.previous_oi;
+            inserRow.insertCell(11).innerHTML = ceData.previous_volume;
+            inserRow.insertCell(12).innerHTML = ceData.top_ask_price;
+            inserRow.insertCell(13).innerHTML = ceData.top_ask_quantity;
+            inserRow.insertCell(14).innerHTML = ceData.top_bid_price;
+            inserRow.insertCell(15).innerHTML = ceData.top_bid_quantity;
+            inserRow.insertCell(16).innerHTML = ceData.volume;
+            inserRow.insertCell(17).innerHTML = 'BUY / SELL';
+        }
+
+
+
+        if (peData) {
+            var inserRow = tbody.insertRow();
+
+            inserRow.insertCell(0).innerHTML = Number(sp);
+            inserRow.insertCell(1).innerHTML = 'pe';
+            inserRow.insertCell(2).innerHTML = peData.greeks.delta;
+            inserRow.insertCell(3).innerHTML = peData.greeks.theta;
+            inserRow.insertCell(4).innerHTML = peData.greeks.gamma;
+            inserRow.insertCell(5).innerHTML = peData.greeks.vega;
+            inserRow.insertCell(6).innerHTML = peData.implied_volatility;
+            inserRow.insertCell(7).innerHTML = peData.last_price;
+            inserRow.insertCell(8).innerHTML = peData.oi;
+            inserRow.insertCell(9).innerHTML = peData.previous_close_price;;
+            inserRow.insertCell(10).innerHTML = peData.previous_oi;
+            inserRow.insertCell(11).innerHTML = peData.previous_volume;
+            inserRow.insertCell(12).innerHTML = peData.top_ask_price;
+            inserRow.insertCell(13).innerHTML = peData.top_ask_quantity;
+            inserRow.insertCell(14).innerHTML = peData.top_bid_price;
+            inserRow.insertCell(15).innerHTML = peData.top_bid_quantity;
+            inserRow.insertCell(16).innerHTML = peData.volume;
+            inserRow.insertCell(17).innerHTML = 'BUY / SELL';
+        }
+
+
+    });
+
+}

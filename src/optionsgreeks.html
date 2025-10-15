@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Options Greeks Live Data </title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header class="option-greeks"> Option Greeks Live Data
+        <a href="/index.html" class="home"> Home </a>
+    </header>
+
+    <div class="sec-nav-bar">
+        <a onclick="showGreeksData(this)" id="Nifty">Nifty</a>
+        <a onclick="showGreeksData(this)" id="BankNifty">Bank Nifty</a>
+        <a onclick="showGreeksData(this)" id="FinNifty">Fin Nifty</a>
+        <a onclick="showGreeksData(this)" id="SenSex">Sensex</a>
+        <a onclick="showGreeksData(this)" id="BankEx">BankEx</a>
+        <a onclick="showGreeksData(this)" id="crudeoilGreeks">Crude Oil</a>
+    </div>
+    <label id="headerData"></label>
+    <label id="headerValue"></label>
+    <table class="optionsGreeksbody" id="greeksbtable">
+        <thead>
+            <tr>        
+                <th>Strike Price </th>
+                <th>CE/PE</th>
+                <th>Delta</th>
+                <th>Theta</th>
+                <th>Gamma</th>
+                <th>Vega</th>
+                <th>IV</th>
+                <th>Last Price</th>
+                <th>OI</th>
+                <th>Previous Close Price</th>
+                <th>Previous OI</th>
+                <th>Previous Volume</th>
+                <th>Top Ask Price</th>
+                <th>Top Ask Quantity</th>
+                <th>Top Bid Price</th>
+                <th>Top Bid Quantity</th>
+                <th>Volume</th>
+                <th>Action / Suggestion</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+</body>
+<script src="script.js"></script>
+
+</html>

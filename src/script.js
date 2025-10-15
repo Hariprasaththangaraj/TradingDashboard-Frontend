@@ -264,7 +264,7 @@ function inserOptionsGreeksDataHeader(element, data) {
     var tbody = document.getElementById('greeksbtable').querySelector('tbody');
     tbody.innerHTML = ''
 
-    var strikePrices = Object.keys(element.data.oc);
+    var strikePrices = Object.keys(element.data.oc).sort();
 
     // console.log(strikePrices)
     strikePrices.forEach((sp) => {
@@ -276,25 +276,25 @@ function inserOptionsGreeksDataHeader(element, data) {
 
         if (ceData) {
             var inserRow = tbody.insertRow();
+            inserRow.insertCell(0).innerHTML = 'BUY / SELL';
+            inserRow.insertCell(1).innerHTML = Number(sp);
+            inserRow.insertCell(2).innerHTML = 'ce';
+            inserRow.insertCell(3).innerHTML = ceData.greeks.delta;
+            inserRow.insertCell(4).innerHTML = ceData.greeks.theta;
+            inserRow.insertCell(5).innerHTML = ceData.greeks.gamma;
+            inserRow.insertCell(6).innerHTML = ceData.greeks.vega;
+            inserRow.insertCell(7).innerHTML = ceData.implied_volatility;
+            inserRow.insertCell(8).innerHTML = ceData.last_price;
+            inserRow.insertCell(9).innerHTML = ceData.oi;
+            inserRow.insertCell(10).innerHTML = ceData.previous_close_price;;
+            inserRow.insertCell(11).innerHTML = ceData.previous_oi;
+            inserRow.insertCell(12).innerHTML = ceData.previous_volume;
+            inserRow.insertCell(13).innerHTML = ceData.top_ask_price;
+            inserRow.insertCell(14).innerHTML = ceData.top_ask_quantity;
+            inserRow.insertCell(15).innerHTML = ceData.top_bid_price;
+            inserRow.insertCell(16).innerHTML = ceData.top_bid_quantity;
+            inserRow.insertCell(17).innerHTML = ceData.volume;
 
-            inserRow.insertCell(0).innerHTML = Number(sp);
-            inserRow.insertCell(1).innerHTML = 'ce';
-            inserRow.insertCell(2).innerHTML = ceData.greeks.delta;
-            inserRow.insertCell(3).innerHTML = ceData.greeks.theta;
-            inserRow.insertCell(4).innerHTML = ceData.greeks.gamma;
-            inserRow.insertCell(5).innerHTML = ceData.greeks.vega;
-            inserRow.insertCell(6).innerHTML = ceData.implied_volatility;
-            inserRow.insertCell(7).innerHTML = ceData.last_price;
-            inserRow.insertCell(8).innerHTML = ceData.oi;
-            inserRow.insertCell(9).innerHTML = ceData.previous_close_price;;
-            inserRow.insertCell(10).innerHTML = ceData.previous_oi;
-            inserRow.insertCell(11).innerHTML = ceData.previous_volume;
-            inserRow.insertCell(12).innerHTML = ceData.top_ask_price;
-            inserRow.insertCell(13).innerHTML = ceData.top_ask_quantity;
-            inserRow.insertCell(14).innerHTML = ceData.top_bid_price;
-            inserRow.insertCell(15).innerHTML = ceData.top_bid_quantity;
-            inserRow.insertCell(16).innerHTML = ceData.volume;
-            inserRow.insertCell(17).innerHTML = 'BUY / SELL';
         }
 
 
@@ -302,24 +302,25 @@ function inserOptionsGreeksDataHeader(element, data) {
         if (peData) {
             var inserRow = tbody.insertRow();
 
-            inserRow.insertCell(0).innerHTML = Number(sp);
-            inserRow.insertCell(1).innerHTML = 'pe';
-            inserRow.insertCell(2).innerHTML = peData.greeks.delta;
-            inserRow.insertCell(3).innerHTML = peData.greeks.theta;
-            inserRow.insertCell(4).innerHTML = peData.greeks.gamma;
-            inserRow.insertCell(5).innerHTML = peData.greeks.vega;
-            inserRow.insertCell(6).innerHTML = peData.implied_volatility;
-            inserRow.insertCell(7).innerHTML = peData.last_price;
-            inserRow.insertCell(8).innerHTML = peData.oi;
-            inserRow.insertCell(9).innerHTML = peData.previous_close_price;;
-            inserRow.insertCell(10).innerHTML = peData.previous_oi;
-            inserRow.insertCell(11).innerHTML = peData.previous_volume;
-            inserRow.insertCell(12).innerHTML = peData.top_ask_price;
-            inserRow.insertCell(13).innerHTML = peData.top_ask_quantity;
-            inserRow.insertCell(14).innerHTML = peData.top_bid_price;
-            inserRow.insertCell(15).innerHTML = peData.top_bid_quantity;
-            inserRow.insertCell(16).innerHTML = peData.volume;
-            inserRow.insertCell(17).innerHTML = 'BUY / SELL';
+            inserRow.insertCell(0).innerHTML = 'BUY / SELL';
+            inserRow.insertCell(1).innerHTML = Number(sp);
+            inserRow.insertCell(2).innerHTML = 'pe';
+            inserRow.insertCell(3).innerHTML = peData.greeks.delta;
+            inserRow.insertCell(4).innerHTML = peData.greeks.theta;
+            inserRow.insertCell(5).innerHTML = peData.greeks.gamma;
+            inserRow.insertCell(6).innerHTML = peData.greeks.vega;
+            inserRow.insertCell(7).innerHTML = peData.implied_volatility;
+            inserRow.insertCell(8).innerHTML = peData.last_price;
+            inserRow.insertCell(9).innerHTML = peData.oi;
+            inserRow.insertCell(10).innerHTML = peData.previous_close_price;;
+            inserRow.insertCell(11).innerHTML = peData.previous_oi;
+            inserRow.insertCell(12).innerHTML = peData.previous_volume;
+            inserRow.insertCell(13).innerHTML = peData.top_ask_price;
+            inserRow.insertCell(14).innerHTML = peData.top_ask_quantity;
+            inserRow.insertCell(15).innerHTML = peData.top_bid_price;
+            inserRow.insertCell(16).innerHTML = peData.top_bid_quantity;
+            inserRow.insertCell(17).innerHTML = peData.volume;
+
         }
 
 
